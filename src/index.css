@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  .mood-option {
+    @apply transition-all duration-200 ease-in-out hover:scale-105 cursor-pointer;
+  }
+  
+  .mood-option.selected {
+    @apply ring-2 ring-blue-500 ring-offset-2;
+  }
+  
+  .journal-card {
+    @apply bg-white/90 backdrop-blur-sm rounded-xl shadow-lg border border-white/20;
+  }
+  
+  .btn-primary {
+    @apply bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-lg font-medium transition-all duration-200 hover:shadow-lg hover:scale-105 active:scale-95;
+  }
+  
+  .btn-secondary {
+    @apply bg-white/80 text-gray-700 px-4 py-2 rounded-lg font-medium transition-all duration-200 hover:bg-white hover:shadow-md;
+  }
+}
