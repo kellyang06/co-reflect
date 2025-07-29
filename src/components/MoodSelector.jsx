@@ -14,7 +14,14 @@ const MoodSelector = ({ selectedMood, onMoodSelect }) => {
 
   return (
     <div className="journal-card p-6 mb-6">
-      <h2 className="text-xl font-semibold text-gray-800 mb-4">How are you feeling today?</h2>
+      <h2 className="text-xl font-semibold text-gray-800 mb-4">
+        How are you feeling today?
+        {selectedMood && (
+          <span className="ml-2 text-sm font-normal text-blue-600">
+            ✓ {selectedMood.name} selected
+          </span>
+        )}
+      </h2>
       <div className="grid grid-cols-4 gap-3">
         {moods.map((mood) => (
           <button
