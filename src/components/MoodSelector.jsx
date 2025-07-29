@@ -22,8 +22,8 @@ const MoodSelector = ({ selectedMood, onMoodSelect }) => {
             onClick={() => onMoodSelect(mood)}
             className={`mood-option p-4 rounded-lg border-2 transition-all duration-200 ${
               selectedMood?.name === mood.name
-                ? `${mood.color} border-2 border-blue-500 scale-105`
-                : `${mood.color} hover:scale-105`
+                ? `${mood.color} border-4 border-blue-500 scale-110 shadow-lg`
+                : `${mood.color} border-2 border-gray-200 hover:scale-105 hover:border-gray-300`
             }`}
           >
             <div className="text-3xl mb-2">{mood.emoji}</div>

@@ -31,12 +31,14 @@ app.post('/api/generate-prompt', async (req, res) => {
     The person wrote: "${entry}"
     Their current mood is: ${mood} ${emoji}
     
-    Generate a thoughtful, gentle follow-up question that encourages deeper reflection. The question should be:
-    - Empathetic and supportive
+    Generate a thoughtful, empathetic follow-up question that encourages deeper reflection. The question should be:
+    - Warm and validating of their feelings
+    - Specific to their mood and the content they shared
     - Open-ended to encourage exploration
-    - Related to their mood and entry content
-    - No more than 2 sentences
-    - Focus on personal growth and self-understanding
+    - Focus on personal growth, self-understanding, or actionable insights
+    - Written in a conversational, caring tone
+    - No more than 2-3 sentences
+    - Avoid generic advice - make it personal to their situation
     
     Respond with only the question, no additional text.`;
 

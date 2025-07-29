@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const GPTResponse = ({ response, isLoading }) => {
+const GPTResponse = ({ response, isLoading, onContinueJournaling, onSkip }) => {
+  const [showOptions, setShowOptions] = useState(false);
+
   if (isLoading) {
     return (
       <div className="journal-card p-6 mb-6">
@@ -27,11 +29,29 @@ const GPTResponse = ({ response, isLoading }) => {
         <div className="flex-1">
           <h3 className="text-lg font-semibold text-gray-800 mb-2">Reflection Prompt</h3>
           <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-4 rounded-lg border-l-4 border-blue-500">
-            <p className="text-gray-700 leading-relaxed">{response}</p>
+            <p className="text-gray-700 leading-relaxed text-lg">{response}</p>
           </div>
-          <p className="text-sm text-gray-500 mt-3">
-            💡 Take a moment to consider this question and how it relates to your thoughts.
-          </p>
+          
+          <div className="mt-4 space-y-3">
+            <p className="text-sm text-gray-600">
+              💡 This prompt is designed to help you explore your thoughts more deeply. Would you like to:
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-3">
+              <button
+                onClick={onContinueJournaling}
+                className="btn-primary text-sm py-2 px-4"
+              >
+                ✍️ Continue Journaling
+              </button>
+              <button
+                onClick={onSkip}
+                className="btn-secondary text-sm py-2 px-4"
+              >
+                ⏭️ Skip for Now
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>

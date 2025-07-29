@@ -11,6 +11,7 @@ function App() {
   const [currentResponse, setCurrentResponse] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [selectedEntry, setSelectedEntry] = useState(null);
+  const [showContinuePrompt, setShowContinuePrompt] = useState(false);
 
   // Load entries from localStorage on component mount
   useEffect(() => {
@@ -53,13 +54,25 @@ function App() {
       saveEntry(newEntry);
       
       setCurrentResponse(gptResponse);
-      setSelectedMood(null); // Reset mood selection
+      setShowContinuePrompt(true);
     } catch (error) {
       console.error('Error processing journal entry:', error);
       alert('There was an error processing your entry. Please try again.');
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const handleContinueJournaling = () => {
+    setShowContinuePrompt(false);
+    setCurrentResponse('');
+    // Keep the same mood selected for continued journaling
+  };
+
+  const handleSkipPrompt = () => {
+    setShowContinuePrompt(false);
+    setCurrentResponse('');
+    setSelectedMood(null); // Reset mood selection
   };
 
   const handleEntryClick = (entry) => {
@@ -97,7 +110,9 @@ function App() {
             
             <GPTResponse 
               response={currentResponse} 
-              isLoading={isLoading} 
+              isLoading={isLoading}
+              onContinueJournaling={handleContinueJournaling}
+              onSkip={handleSkipPrompt}
             />
           </div>
 
